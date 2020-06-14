@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+    
+    <head>
+        <title>
+            Demo
+        </title>
+            <title>
+            Demo
+        </title>
+        <style>
+            .button1 {
+                -webkit-transition-duration: 0.4s;
+                transition-duration: 0.4s;
+                padding: 16px 32px;
+                text-align: center;
+                background-color: #af6f6f;
+                color: black;
+                border: 1px solid #cfcfef;
+                border-radius:5px;
+            }
+            .button1:hover {
+                background-color: #6f2f2f;
+                color: white;
+            }
+        </style>
+    </head>
+    <body style="font-family:arial;font-size:20px; background-color:#cfcfef;">
+        <div style="align:center; background-color:#9f9fbf">
+            <h1 style="text-align: center">文本摘要生成</h1>
+            <p style="text-align:center">一个文本摘要生成工具,目前仅支持英文</p>
+        </div>
+        <h3  style="text-align: center">
+            请输入文段:
+            <br />
+                <span style="font-size:10px;text-align: center;">请勿换行，输入文本不少于40个词</span>
+            <br />
+        </h3>
+        
+        <div style="text-align: center">
+            <form action="../Textsummarization/" method="post">
+                {% csrf_token %}
+                <textarea name="input_block" style="width: 1000px; height: 150px; align-self: center">{{input}}</textarea>
+                <div style="font-family:arial;font-size:15px;">
+                请选择语言：
+                <input type="radio" name="Language" value="Chinese" />中文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="Language" value="English" checked />英语&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+                <br />
+                <input class=button1 type="submit" id="submit" value="点击生成摘要" onclick='document.getElementById("output_block").innerHTML = "Please wait..."'></input>
+            </form>
+        </div>
+        <h3  style="text-align: center">
+            生成结果：
+        </h3>
+        <div style="text-align: center">
+            <textarea id="output_block"  readonly="readonly" style="width: 1000px; height: 150px; align-self: center">{{ret}}</textarea>
+        </div>
+        <address style="text-align: center">
+            Written by 张子涵.<br> 
+            Email:<br>
+            qhzhangzihan@pku.edu.cn<br>
+        </address>
+            
+    </body>
+</html>
